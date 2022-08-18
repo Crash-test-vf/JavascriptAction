@@ -429,7 +429,7 @@ const androidCheck = async () => {
 
   const response = await octokit.rest.pulls.listFiles({
     owner: github.context.payload.repository.owner.login,
-    repo: github.context.payload.base.repo.name,
+    repo: github.context.payload.pull_request.base.repo.name,
     pull_number: github.context.payload.number,
   });
 
