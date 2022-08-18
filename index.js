@@ -424,12 +424,22 @@ exports.issueCommand = issueCommand;
 const core = __webpack_require__(470);
 const github = __webpack_require__(469);
 
+const androidCheck = async () => {
+  const octokit = github.getOctokit("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");
+
+  const response = await octokit.rest.pulls.listFiles({
+    owner: github.context.payload.owner.login,
+    repo: github.context.payload.base.repo.name,
+    pull_number: github.context.payload.number,
+  });
+
+  console.log(response);
+};
+
 try {
-  const repo = core.getInput("repo");
-  const token = core.getInput("token");
-  const sha = core.getInput("sha");
-  const payload = JSON.stringify(github.context, undefined, 2);
-  console.log(`The event payload: ${payload}`);
+  // const payload = JSON.stringify(github.context, undefined, 2);
+  // console.log(`The event payload: ${payload}`);
+  androidCheck();
 } catch (error) {
   core.setFailed(error.message);
 }
