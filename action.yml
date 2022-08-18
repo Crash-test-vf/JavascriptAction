@@ -1,0 +1,15 @@
+name: 'Content Check'
+description: 'Check changes of a PR'
+inputs:
+  repo:
+    description: 'the repo of the PR'
+    required: true
+  token:
+    description: 'the token that will be used for the api call'
+    required: true
+  sha:
+    description: "the commit's sha"
+    required: true
+runs:
+  using: 'node16'
+  main: 'index.js'
