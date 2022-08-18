@@ -434,12 +434,12 @@ const androidCheck = async () => {
     pull_number: github.context.payload.number,
   });
 
-  console.log(response);
+  response.data.map((file) => {
+    console.log(file.patch.replace(/^-|^\+|@@.+@@/gm, ""));
+  });
 };
 
 try {
-  // const payload = JSON.stringify(github.context, undefined, 2);
-  // console.log(`The event payload: ${payload}`);
   androidCheck();
 } catch (error) {
   core.setFailed(error.message);
