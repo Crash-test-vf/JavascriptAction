@@ -428,7 +428,7 @@ const androidCheck = async () => {
   const octokit = github.getOctokit("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");
 
   const response = await octokit.rest.pulls.listFiles({
-    owner: github.context.payload.owner.login,
+    owner: github.context.payload.repository.owner.login,
     repo: github.context.payload.base.repo.name,
     pull_number: github.context.payload.number,
   });
