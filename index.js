@@ -425,7 +425,7 @@ const core = __webpack_require__(470);
 const github = __webpack_require__(469);
 
 const androidCheck = async () => {
-  const octokit = github.getOctokit("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");
+  const octokit = github.getOctokit("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");
   core.notice("Something happened that you might want to know about.");
 
   const response = await octokit.rest.pulls.listFiles({
