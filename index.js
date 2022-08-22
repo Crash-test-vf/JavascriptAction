@@ -424,26 +424,7 @@ exports.issueCommand = issueCommand;
 const core = __webpack_require__(470);
 const github = __webpack_require__(469);
 
-const androidCheck = async () => {
-  const octokit = github.getOctokit(core.getInput("token"));
-  core.notice("Something happened that you might want to know about.");
-
-  const response = await octokit.rest.pulls.listFiles({
-    owner: github.context.payload.repository.owner.login,
-    repo: github.context.payload.pull_request.base.repo.name,
-    pull_number: github.context.payload.number,
-  });
-
-  response.data.map((file) => {
-    console.log(file.patch.replace(/^-|^\+|@@.+@@/gm, ""));
-  });
-};
-
-try {
-  androidCheck();
-} catch (error) {
-  core.setFailed(error.message);
-}
+console.log(github.context);
 
 
 /***/ }),
